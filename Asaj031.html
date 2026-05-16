@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aplikasi Belajar Sekolah</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      background:#0d47a1;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* MOTIF BATIK */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:
+      radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08) 2px, transparent 3px),
+      radial-gradient(circle at 80% 40%, rgba(255,255,255,0.06) 2px, transparent 3px),
+      linear-gradient(45deg, rgba(255,255,255,0.04) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(255,255,255,0.04) 25%, transparent 25%);
+      background-size: 60px 60px;
+      z-index:-1;
+    }
+
+    header{
+      background:#1565c0;
+      padding:20px;
+      text-align:center;
+      box-shadow:0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    header h1{
+      font-size:32px;
+    }
+
+    nav{
+      display:flex;
+      justify-content:center;
+      gap:15px;
+      flex-wrap:wrap;
+      padding:15px;
+      background:#1976d2;
+    }
+
+    nav button{
+      padding:12px 20px;
+      border:none;
+      border-radius:12px;
+      background:white;
+      color:#1565c0;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    nav button:hover{
+      background:#bbdefb;
+      transform:scale(1.05);
+    }
+
+    .page{
+      display:none;
+      padding:25px;
+      animation:fade 0.4s;
+    }
+
+    .active{
+      display:block;
+    }
+
+    @keyframes fade{
+      from{
+        opacity:0;
+        transform:translateY(10px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .card{
+      background:rgba(255,255,255,0.12);
+      backdrop-filter:blur(5px);
+      padding:20px;
+      border-radius:20px;
+      margin-bottom:20px;
+      box-shadow:0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    h2{
+      margin-bottom:15px;
+      color:#e3f2fd;
+    }
+
+    ul{
+      padding-left:20px;
+    }
+
+    li{
+      margin:10px 0;
+    }
+
+    .subject{
+      background:#42a5f5;
+      padding:10px;
+      border-radius:10px;
+      margin-bottom:10px;
+    }
+
+    .question{
+      margin-bottom:20px;
+    }
+
+    .question p{
+      margin-bottom:10px;
+      font-weight:bold;
+    }
+
+    .option{
+      background:rgba(255,255,255,0.1);
+      padding:10px;
+      border-radius:10px;
+      margin:6px 0;
+      cursor:pointer;
+      transition:0.2s;
+    }
+
+    .option:hover{
+      background:rgba(255,255,255,0.25);
+    }
+
+    .btn{
+      padding:12px 20px;
+      border:none;
+      border-radius:12px;
+      background:#64b5f6;
+      color:#003c8f;
+      font-weight:bold;
+      cursor:pointer;
+      margin-top:15px;
+    }
+
+    .score-box{
+      font-size:22px;
+      background:#1e88e5;
+      padding:20px;
+      border-radius:20px;
+      text-align:center;
+      margin-top:20px;
+    }
+
+    footer{
+      text-align:center;
+      padding:20px;
+      background:#1565c0;
+      margin-top:30px;
+    }
+
+    @media(max-width:700px){
+      header h1{
+        font-size:24px;
+      }
+
+      nav{
+        gap:10px;
+      }
+
+      nav button{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>📘 Aplikasi Belajar Sekolah</h1>
+  <p>Tema Biru Motif Batik Khas Balikpapan</p>
+</header>
+
+<nav>
+  <button onclick="showPage('jadwal')">Jadwal</button>
+  <button onclick="showPage('materi')">Materi</button>
+  <button onclick="showPage('banksoal')">Bank Soal</button>
+  <button onclick="showPage('nilai')">Penilaian</button>
+</nav>
+
+<!-- HALAMAN JADWAL -->
+<section id="jadwal" class="page active">
+  <div class="card">
+    <h2>📅 Jadwal Mata Pelajaran</h2>
+
+    <div class="subject">Senin - Bahasa Indonesia</div>
+    <div class="subject">Selasa - IPAS</div>
+    <div class="subject">Rabu - Matematika</div>
+    <div class="subject">Kamis - Bahasa Inggris</div>
+    <div class="subject">Jumat - PPKN</div>
+
+  </div>
+</section>
+
+<!-- HALAMAN MATERI -->
+<section id="materi" class="page">
+  <div class="card">
+    <h2>📚 Materi Pelajaran</h2>
+
+    <ul>
+      <li><b>Bahasa Indonesia</b> - Teks Deskripsi</li>
+      <li><b>IPAS</b> - Ekosistem dan Lingkungan</li>
+      <li><b>Matematika</b> - Pecahan dan Perkalian</li>
+      <li><b>Bahasa Inggris</b> - Greeting & Introduction</li>
+      <li><b>PPKN</b> - Pancasila dan Norma</li>
+    </ul>
+
+  </div>
+</section>
+
+<!-- HALAMAN BANK SOAL -->
+<section id="banksoal" class="page">
+  <div class="card">
+    <h2>📝 BANK SOAL</h2>
+
+    <div class="question">
+      <p>1. Ibu kota Indonesia adalah?</p>
+
+      <div class="option">
+        <input type="radio" name="q1" value="0"> Surabaya
+      </div>
+
+      <div class="option">
+        <input type="radio" name="q1" value="1"> Jakarta
+      </div>
+
+      <div class="option">
+        <input type="radio" name="q1" value="0"> Bandung
+      </div>
+    </div>
+
+    <div class="question">
+      <p>2. 5 x 6 = ?</p>
+
+      <div class="option">
+        <input type="radio" name="q2" value="1"> 30
+      </div>
+
+      <div class="option">
+        <input type="radio" name="q2" value="0"> 25
+      </div>
+
+      <div class="option">
+        <input type="radio" name="q2" value="0"> 20
+      </div>
+    </div>
+
+    <div class="question">
+      <p>3. Hewan pemakan tumbuhan disebut?</p>
+
+      <div class="option">
+        <input type="radio" name="q3" value="1"> Herbivora
+      </div>
+
+      <div class="option">
+        <input type="radio" name="q3" value="0"> Karnivora
+      </div>
+
+      <div class="option">
+        <input type="radio" name="q3" value="0"> Omnivora
+      </div>
+    </div>
+
+    <button class="btn" onclick="hitungNilai()">
+      Cek Nilai
+    </button>
+
+  </div>
+</section>
+
+<!-- HALAMAN NILAI -->
+<section id="nilai" class="page">
+  <div class="card">
+    <h2>🏆 Penilaian</h2>
+
+    <div class="score-box" id="hasilNilai">
+      Nilai Akan Muncul Di Sini
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 Aplikasi Belajar Sekolah
+</footer>
+
+<script>
+  function showPage(pageId){
+
+    const pages = document.querySelectorAll('.page');
+
+    pages.forEach(page => {
+      page.classList.remove('active');
+    });
+
+    document.getElementById(pageId).classList.add('active');
+  }
+
+  function hitungNilai(){
+
+    let score = 0;
+
+    const q1 = document.querySelector('input[name="q1"]:checked');
+    const q2 = document.querySelector('input[name="q2"]:checked');
+    const q3 = document.querySelector('input[name="q3"]:checked');
+
+    if(q1) score += parseInt(q1.value);
+    if(q2) score += parseInt(q2.value);
+    if(q3) score += parseInt(q3.value);
+
+    let nilai = score * 100 / 3;
+
+    document.getElementById('hasilNilai').innerHTML =
+      "Nilai Kamu: <br><h1>" + Math.round(nilai) + "</h1>";
+
+    showPage('nilai');
+  }
+</script>
+
+</body>
+</html>
